@@ -1,55 +1,30 @@
-#[PYIA-A13] Crie uma classe chamada ContaBancaria que tenha dois atributos privados, 
-# _saldo e _titular. O atributo _saldo deve armazenar o saldo da conta, 
-# enquanto o atributo _titular deve armazenar o nome do titular da conta. 
-# Para interagir com esses atributos, implemente métodos públicos que permitam realizar operações bancárias. 
-# Crie um método depositar que permita adicionar um valor ao saldo, 
-# um método sacar que permita retirar um valor do saldo (caso haja saldo suficiente), 
-# e um método exibir_saldo que exiba o saldo atual da conta. Utilize métodos para encapsular o acesso ao saldo, 
-# garantindo que ele só possa ser alterado de maneira controlada pelos métodos de depósito e saque.
+# [PYIA-A12]  Crie uma classe base chamada Veiculo que tenha um método chamado movimentar. 
+# Este método deve imprimir a mensagem "Veículo está em movimento." para indicar que qualquer veículo está em movimento.
+#  Em seguida, crie duas subclasses chamadas Carro e Moto que herdem de Veiculo. 
+# Dentro de cada uma dessas subclasses, sobrescreva o método movimentar para imprimir mensagens específicas para cada tipo de veículo.
+#  Na classe Carro, o método movimentar deve imprimir "Carro está dirigindo.", enquanto na classe Moto, o método deve imprimir "Moto está acelerando."
 
 
-class ContaBancaria:
-    def __init__(self,nome):
-        self._nome = nome
-        self._saldo = 0
-
-    def depositar(self,valor):
-        if valor > 0:
-            self._saldo += valor 
-            print(f'Valor De R${valor}, seu novo saldo é R$ {self._saldo}')
-        else:
-            print('Necessario saldo de valor positivo')
-
-    def sacar(self,valor):
-        if 0 < valor <= self._saldo :
-            self._saldo -= valor
-            print(f'Valor sacado R$ {valor} , Novo saldo R${self._saldo}')
-        else:
-            print('Valor de saldo inválido')
-
-    def exibir_saldo(self):
-        print(f'Saldo atual:{self._saldo}')
-
-nova_conta = ContaBancaria('Irineu')
+class Veiculo:
+    def movimentar(self):
+        print('Veiculo está em movimento')
 
 
-nova_conta.exibir_saldo()
-print('-'*60)
+class Carro(Veiculo):
+    def movimentar(self):
+        return('dirigir o carro ')
+    
 
-nova_conta.depositar(1000)
-print('-'*60)
+class Moto(Veiculo):
+    def movimentar(self):
+        return('pilotando a moto')
+    
 
-nova_conta.exibir_saldo()
-print('-'*60)
+ford = Carro()
+print(f'Eu vou {ford.movimentar()} a noite inteira ')
 
-nova_conta.sacar(150)
-print('-'*60)
+print('-'*100)
 
-nova_conta.exibir_saldo()
-print('-'*60)
-
-nova_conta.sacar(2000)
-
-
-
+honda = Moto()
+print(f'Eu vou {honda.movimentar()} esse fim se semana ')
 
